@@ -1,0 +1,11 @@
+Package: RTutorCreativity
+Type: Package
+Title: RTutor problem set creativity
+Version: 0.1
+Date: 2022-07-01
+Author: Daniel_Klinke
+Maintainer: Daniel_Klinke <daniel.klinke@uni-ulm.de>
+Description: RTutor problem set creativity
+License: Problem set content: Creative Commons (CC BY-NC 4.0)
+	Package code: GPL >= 2.0
+Depends: RTutor, ggplot2, haven, dplyr, purrr, imager, skimr, quanteda, readtext, tidyverse, RColorBrewer, readxl, treemapify, gridBase, gridExtra, DiagrammeR, lfe, AER, stargazer
