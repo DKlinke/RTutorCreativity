@@ -631,7 +631,7 @@ reg1<-lm( output~negemo, data=dat)
 reg2<-lm( output~negemo+tenure, data=dat)
 
 stargazer(reg1, reg2,
-          type="html",
+          type="text",
           digits=3,
           omit.table.layout="s",
           model.numbers=FALSE,
@@ -698,7 +698,7 @@ reg4 <- felm(output ~ negemo + age_1 + age_2 +age_3+age_4 + tenure + touring + m
 
 
 stargazer(reg1, reg2, reg3, reg4,
-          type="html",
+          type="text",
           digits=3,
           model.numbers=FALSE,
           column.labels=c("Short Model (1)", "Long Model (2)", "Fixed Effects(3)", "Combined Model(4)"),
@@ -883,7 +883,7 @@ FirstStageShort <- felm(negemo ~ death_of_relative  +age_1 + age_2 +age_3+age_4 
 FirstStageLong <- felm(negemo ~ death_of_relative + age_1 + age_2 +age_3+age_4+ tenure + touring + marriage_cohabitation + illness + letters_annual| composer + category_relationship , data=dat)
 
 stargazer(FirstStageShort, FirstStageLong,
-          type="html",
+          type="text",
           digits=3,
           model.numbers=FALSE,
           column.labels=c("FirstStageShort","FirstStageLong"),
@@ -961,7 +961,7 @@ reg3IV <- ivreg( output ~ negemo+ composer1+composer2 | death_of_relative+ compo
 
 
 stargazer(reg1, reg2, reg3, reg4,reg3IV,reg4IV,
-          type="html",
+          type="text",
           title="Creativity and negative emotions. Model summary",
           digits=3,
           model.numbers=FALSE,
@@ -1032,7 +1032,7 @@ SadnessIV <- ivreg( output ~ ___ +age_1 + age_2 +age_3+age_4 + composer1+compose
 
 stargazer(Stage1Anx,AnxietyIV,Stage1Anger,AngerIV ,Stage1Sad,SadnessIV, 
           style="default",
-          type="html", 
+          type="text", 
           title="Creativity gains by type of negative emotion",
           column.labels=c("Anxiety First Stage", "Output Anxiety", "Anger First Stage", "Output Anger", "Sadness First Stage", "Output Sadness"),
           omit = c("age_1","age_2","age_3","age_4","Constant","composer1","composer2","composer3","relationship1","relationship2","relationship3","relationship4","relationship5","relationship6"),
