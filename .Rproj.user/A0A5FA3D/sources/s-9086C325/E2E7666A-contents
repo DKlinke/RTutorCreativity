@@ -1,7 +1,0 @@
-library(RTutorCreativity)
-
-# Adapt your working directory to an existing folder
-setwd("C:/problemsets/RTutorCreativity")
-# Adapt your user name
-run.ps(user.name="Jon Doe", package="RTutorCreativity",
-       auto.save.code=TRUE, clear.user=FALSE)

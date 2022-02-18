@@ -21,15 +21,15 @@ create.ps(sol.file=sol.file, ps.name=ps.name, libs=libs,addons = "quiz")
 
 
 # This function creates a skeleton for your problem set package. It is enough to do this process one time. For more Information read the manuals on https://skranz.github.io/RTutor/ 
-rtutor.package.skel(sol.file=sol.file, ps.name=ps.name,libs=libs,
-                   pkg.name="RTutorCreativity",   # Name of the problem set package
-                   pkg.parent.dir = "C:/Users/dkani/OneDrive/Desktop/Uni Ulm/Wirtschaftswissenschaften Bachelor/6.Semester/Bachelorarbeit/BA_R/RTutorCreativity", # Parent directory 
-                   author="Daniel_Klinke", # Your name
-                   github.user="DKlinke",     # Your github user name
-                   extra.code.file=NULL, # name of extra.code.file
-                   var.txt.file="variable_names",    # name of var.txt.file
-                   overwrite=TRUE  # Do you want to override if package directory exists?
-)
+#rtutor.package.skel(sol.file=sol.file, ps.name=ps.name,libs=libs,
+#                   pkg.name="RTutorCreativity",   # Name of the problem set package
+#                   pkg.parent.dir = "C:/Users/dkani/OneDrive/Desktop/Uni Ulm/Wirtschaftswissenschaften Bachelor/6.Semester/Bachelorarbeit/BA_R/RTutorCreativity", # Parent directory 
+#                   author="Daniel_Klinke", # Your name
+#                   github.user="DKlinke",     # Your github user name
+#                   extra.code.file=NULL, # name of extra.code.file
+#                   var.txt.file="variable_names",    # name of var.txt.file
+#                   overwrite=TRUE  # Do you want to override if package directory exists?
+#)
 
 
 # The following line directly shows the problem set in the browser
@@ -45,7 +45,7 @@ dat <- readRDS("composer_data_reduced.rds")
 ## Exercise Introduction
 
 ### Welcome
-<!--The introduction in the thesis differs from the introduction here --> 
+<!--The introduction in the thesis differs from the introduction stated here --> 
 Welcome to this interactive R tutor problem set that is part of my bachelor thesis at the University of Ulm. If you want to explore the diversity of economics and improve your R skills in addition to your economic understanding, you will have a lot of fun with this problem set.
 
 Have you ever thought about the economic importance of creativity, how to measure it and what effect the state of mind has on creativity?
@@ -59,33 +59,33 @@ This problemset is based on the paper ["How Are You, My Dearest Mozart? Well-Bei
 
 **Excercise 1: Overview: Descriptive statistics**
 
-1.1 Examining Emotions
+1.1 Examining emotions
 
-1.2 Examining Output
+1.2 Examining output
 
-**Excercise 2: Result Analysis: Impact of Emotions on creativity**
+**Excercise 2: Result analysis: Impact of emotions on creativity**
 
-2.1 Control Variables and Fixed Effects
+2.1 Control variables and fixed effects
 
-2.1.1 Omitted Variable Bias
+2.1.1 Omitted variable bias
 
-2.1.2 Fixed Effects
+2.1.2 Fixed effects
 
-2.1.3 Comparison of the Results
+2.1.3 Comparison of the results
 
-2.2 Instrumental Variables Regression
+2.2 Instrumental variables regression
 
-2.2.1 Theoretical Introduction: Simple Instrumental Variable Regression and Two-Stage Least Squares Method
+2.2.1 Theoretical introduction: Simple instrumental variable regression and two-stage least squares method
 
-2.2.2 Applied Instrumental Variable Regression
+2.2.2 Applied instrumental variable regression
 
-2.2.3 Results and Discussion
+2.2.3 Results and discussion
 
 **Excercise 3: Main negative emotion**
 
 **Excercise 4: Obtaining emotion indicators**
 
-4.1 Letter Analysis using quanteda
+4.1 Letter analysis using quanteda
 
 4.1.1  Corpus creation
 
@@ -212,7 +212,7 @@ If you haven't heard of these functions and the dplyr package before, the follow
 
 *If you have skipped the last task, click edit before you can go on and solve the junk.*
 
-**Task:** Some variables in `dat` are redundant or we do not need them currently. Load the package `dplyr`, then use the `select()` function to select the variable columns of `dat` that are relevant for us and store them in a reduced version `dat_red`. This is a fill in Task, therefore you just have to remove the gaps ___ with the correct terms.
+**Task:** Some variables in `dat` are redundant or we do not need them currently. Load the package `dplyr`, then use the `select()` function to select the variable columns of `dat` that are relevant for us and store them in a reduced version `dat_red`. This is a fill in task, therefore you just have to remove the gaps ___ with the correct terms.
 
 ```{r}
 #< fill_in
@@ -332,7 +332,7 @@ Because it is appropriate at this point, you will get a detailed description of 
 #< info "Detailed variable description"
 
 - `composer`: Identifies the composer (e.g. Mozart, Liszt or Beethoven)
-- `numberofletter`: Letter identifier for each componist
+- `numberofletter`: Letter identifier for each composer
 - `letters_annual`: Number of total letters written in the corresponding year the current letter was written 
 - `category_relationship`: Type of addressee (e.g. business, family, friend, peer, stranger, unknown)
 - `wc`: Word count. Number of words in the corresponding letter (generated via LIWC)
@@ -368,11 +368,11 @@ Because it is appropriate at this point, you will get a detailed description of 
 #>
 
 
-## Exercise 1.1 -- Examining Emotions
+## Exercise 1.1 -- Examining emotions
 
 To get an impression of how the important variables emotion and output behave, we plot the data over the life of an artist. As an example we will use the data of Mozart. Note, that the emotion data were generated in a special way. We will get into more detail regarding the generation process in the following part of the problemset. For now, it is sufficient to know that the emotion scores (e.g. negemo, posemo) are the proportion of the correspondingly connotated words in the total word count. The first step of plotting emotions is to prepare the data for it.
 
-### Prepare Data
+### Prepare data
 
 Besides `select()` and `group_by()` we now use another very helpful function of the `dplyr` package: `filter()`. We use our main dataset again, but this time we are only interested in the relevant data for the composer Mozart, and the columns `age`, `negemo`, `posemo` and `output` . The `filter()` function in combination with `select()` takes over exactly this task. Instead of using intermediate variables to implement the process as before, this is an opportunity to introduce the pipe operator. The "pipe operator" `%>%` combines the different commands at the end of each line. So it uses the result of the previous line as the first argument in the function call of the next line.
 
@@ -403,7 +403,7 @@ datMozart
 
 In `datMozart` each row still represents a letter, but now only contains Mozart's letters with the selected columns of interest. This simplifies the creation of the graph in the next step and enhances the understanding of the data being examined.
 
-### Plot Emotion
+### Plot emotion
 
 You may already know the `plot()` function in R to create graphs quickly and easily. However, there is a graphically nicer and more popular way to create graphs, which we will use in this problemset: `ggplot`. Once you have understood how it works generating descriptive graphs is quite efficient.
 
@@ -475,7 +475,7 @@ At the age of 25, his life took a turn for the better. First he was offered a po
 In summary, the charts created using emotion scores are useful. Comparison with biographical data also serves as a validity check. More on this will be discussed in the chapter on determining emotion scores.
 
 
-## Exercise 1.2 -- Examining Output
+## Exercise 1.2 -- Examining output
 
 We again use the data for Mozart to see how many outstanding pieces (`output`) he composed at which age. The graph is generated using the same principle as in the previous exercise, so just click on `check`.
 
@@ -518,13 +518,13 @@ grid.arrange(MoNeg ,MoOut + xlim(14,NA) , top="Wolfgang Amadeus Mozart Output an
 ```
 
 If we look at the graphs, it seems that the composer composes the most significant pieces when his negative emotions are high and as soon as they decrease, the output variable decreases again with a short delay. If we additionally look at the correlation of the two variables negemo and output, it seems that with a value of 0.13 there is a connection between them. 
-But does the graph and correlation already mean that the two variables are related? No! The previous graphs were deliberately meant to suggest such a dependency, as it is often the case in unobjective discussions. This informal fallacy is often referred to as "Post hoc ergo propter hoc" argument which translates to "after this, therefore because of this". This means that it is incorrectly assumed that event A causes event B only because event B followed event A. Furthermore events are mainly explained monocausal, ignoring that one event often has many influencing factors. 
+But does the graph and correlation already mean that negative emotions causally affect the output? No! The previous graphs were deliberately meant to suggest such a dependency, as it is often the case in unobjective discussions. This informal fallacy is often referred to as "Post hoc ergo propter hoc" argument which translates to "after this, therefore because of this". This means that it is incorrectly assumed that event A causes event B only because event B followed event A. Furthermore events are mainly explained monocausal, ignoring that one event often has many influencing factors. 
 
 The following [page](http://www.tylervigen.com/spurious-correlations) presents this fallacy in a humorous way. The presented examples clearly do not make any sense and the majority of people probably can not be convinced that Math doctorates awarded causes an increasion of uranium stored at US nuclear power plants. However, there are situations in which the post hoc ergo propter hoc reasoning leads to severe problems. For example, some people still directly associate vaccination of infants with the development  of autism, although this has been widely studied and refuted, as shown by Hviid et al. (2019) in a nationwide cohort study.  The result is diseases that could be eradicated but continue to circulate in the population because herd immunity cannot be established.
 
 Why it could be a fallacy to interpret negative emotions as a cause for creativity in our case as well, why we have to be very careful about the formulation of potential outcomes and why we can still say at the end of our problem set that negative emotions lead to a higher output is covered in the next exercises.
 
-## Exercise 2 -- Result Analysis: Impact of Emotions on creativity
+## Exercise 2 -- Result analysis: Impact of emotions on creativity
 
 So far, we have obtained an overview of the data and used descriptive statistics to analyze it. We also found a certain positive correlation between output and negative emotions for Mozart. However, this correlation does not necessarily have to be causal. Our goal in the following exercises is to show whether there really is a causal effect between negative emotions and the creativity of an artist. At the end of the problem set we provide a satisfactory answer to this question based on our multiple methods. 
 
@@ -789,44 +789,46 @@ Note in particular that correlation only measures linear dependence between two 
 
 Causality describes the connection between a thing that happens and a thing that causes it. Expressed again in the words of Wooldridge (2020, p.798), causality is "A ceteris paribus change in one variable that has an effect on another variable". Ceteris paribus means that all other (relevant) factors or things are remaining the same. You can imagine that it is partly not easy/impossible to keep all other effects constant. If the other effects cannot be held constant, we cannot determine the causal effect. 
 
-Correlation therefore does not mean causality. However, correlation is necessary for a causal connection. 
+Correlation therefore does not mean causality. Often it is said that correlation is necessary for a causal connection, but it could also be the case that we do not see any correlation and have a causal relation (e.g. if we have opposite bias effects that add up to zero together with the true effect). 
 
 So, returning to our example, the significant results for our estimator so far simply say that negative emotions are correlated with output. 
 
 ### 2.1.1 Omitted Variable Bias
 
 Recall again the assumptions made for linear regression we introduced in the previous exercise. The model $(1)$ violates assumption II, which states that explanatory variables should not contain any information about the error term on average and vice versa. In the error term $u$ of $output_i = \beta_0+\beta_1negemo_i+u_i$ are other factors that influence $output$, for example whether the artist has a lot or little time and motivation to compose. A suitable indicator that captures this is whether he works freelance or currently has a permanent position. The dummy variable $tenure$ provides us with information exactly about this. If the composer has a permanent job it takes the value $1$, if not then the value $0$.
-Assumption 2 $\mathbb{E}(u|x_1,...,x_k)=0\:$ translates for model $(1)$ accordingly that the employment relationship of the artist (`tenure`) should be independent of the value of negative emotions (`negemo`). Consequently, the assumption would be violated if the artist felt better or worse about taking a secure job. This is presumably the case.
+Assumption II $\mathbb{E}(u|x_1,...,x_k)=0\:$ translates for model $(1)$ accordingly that the employment relationship of the artist (`tenure`) should be independent of the value of negative emotions (`negemo`). Consequently, the assumption would be violated if the artist felt better or worse about taking a secure job. This is presumably the case.
 
 By obviously excluding a relevant variable (`tenure`) from the regression in model $(1)$, we obtain a biased estimator for $\beta_1$. This problem is also referred to as the "Omitted Variable Bias". We can estimate the direction of the bias in different ways.
 
 ### Bias formula
 
-Let us just assume for the explanation of the omitted variable bias that we are in a world where model $(2)$ is the long "true" model and model $(1)$ is the short underspecified model. In reality, model $(2)$ is still underspecified and can  **not** be used to describe a causal effect, but we assume this for didactic reasons. An updated model by integrating `tenure` looks like this.
+Let us just assume for the explanation of the omitted variable bias that we are in a world where model $(2)$ is the long "true" model and model $(1)$ is the short underspecified model. In reality, model $(2)$ is still underspecified and **cannot** be used to describe a causal effect, but we assume this for didactic reasons. An updated model by integrating `tenure` looks like this.
 
-\[ output = \beta_0^{long}+\beta_1^{long}negemo+\beta_2^{long}tenure+u \tag{2}
+\[ output = \beta_0+\beta_1negemo+\beta_2tenure+u \tag{2}
  \]
 
 We notate model $(1)$ accordingly
 
-\[ output = \beta_0^{short}+\beta_1^{short}negemo+v \tag{1}
+\[ output = \beta_0+\beta_1negemo+v \tag{1}
  \]
  
 If, out of ignorance or for reasons of data availability, one now only estimates model $(1)$ although model $(2)$ is the true model, the error term from model 1 contains the information about a tenured position.
 
-\[ v = \beta_2^{long}tenure+u
+\[ v = \beta_2tenure+u
  \]
 
-One can see well that in the short model `negemo` is correlated with the error $v$, since it includes `tenure`. Thus, in the short model $(1)$, the estimator for $\beta_1^{short}$ is a biased estimator since it violates assumption 2.
+One can see well that in the short model `negemo` is correlated with the error $v$, since it includes `tenure`. Thus, in the short model $(1)$, the estimator for $\beta_1$ is a biased estimator since it violates assumption II. We notate this estimator as  $\tilde{\beta_1}$instead of $\hat{\beta_1}$ to emphasize that it comes from the short, underspecified model. 
 
-On the other hand, since we assume that model 2 is the true model, it also satisfies all the assumptions we made in the previous chapter. Consequently, the estimators for $\beta_1^{long}$ and $\beta_2^{long}$ are unbiased. Given the algebraic connection of the short and long models $\beta_1^{short}=\beta_1^{long}+\beta_2^{long}\delta_1$ (proof can be found in Wooldridge 2020, pp. 114-115), where $\delta_1$ comes from the regression $tenure=\delta_0+\delta_1negemo+\epsilon$ (cf. Wooldridge 2020, pp.84-86), it holds that $\mathbb{E}(\beta_1^{short})=\beta_1^{long}+\beta_2^{long}\delta_1$
+On the other hand, since we assume that model $(2)$ is the true model, it also satisfies all the assumptions we made in the previous chapter. Consequently, the estimators for $\beta_1$ (notated $\hat{\beta_1}$ to emphasize it is from the long model) and $\beta_2$ (notated $\hat{\beta_2}$) are unbiased. Given the algebraic connection of the short and long model $\tilde\beta_1=\hat\beta_1+\hat\beta_2\tilde\delta_1$ (proof can be found in Wooldridge 2020, pp. 114-115), where $\tilde\delta_1$ comes from the regression $tenure=\delta_0+\delta_1negemo+\epsilon$ (Wooldridge 2020, pp.84-86), it holds that
 
-and thus the bias of $\beta_1^{short}$ can be derived as follows
+$\mathbb{E}(\tilde\beta_1)=\beta_1+\beta_2\tilde\delta_1$
+
+and thus the bias of $\tilde\beta_1$ can be derived as follows
  
-\[ Bias(\beta_1^{short})=\mathbb{E}(\beta_1^{short})-\beta_1^{long} = \beta_2^{long}\delta_1
+\[ Bias(\tilde\beta_1)=\mathbb{E}(\tilde\beta_1)-\beta_1 = \beta_2\tilde\delta_1
  \]
  
-Because $\delta_1=corr(negemo,tenure)\cdot\frac{sd(tenure)}{sd(negemo)}$ (proof can be found in Wooldridge 2020, pp.25-26) the direction(sign) of the bias is only depending on the correlation of the two explanatory variables (the sample standard deviations can only take positive values) and $\beta_2^{long}$. The following table based on Wooldridge (2020, p.85) gives a good overview of the bias in $\beta_1^{short}$ when a second relevant explainatory variable is omitted:
+Because $\tilde\delta_1=corr(negemo,tenure)\cdot\frac{sd(tenure)}{sd(negemo)}$ (proof can be found in Wooldridge 2020, pp.25-26) the direction(sign) of the bias is only depending on the correlation of the two explanatory variables (the sample standard deviations can only take positive values) and $\beta_2$. The following table based on Wooldridge (2020, p.85) gives a good overview of the bias in the estimator for $\beta_1$ when a second relevant explainatory variable is omitted:
 
 #< info "Omitted Variable Bias"
 
@@ -873,17 +875,17 @@ Note that the table can only be applied reliably for the simple case. With addit
 In our case, what are the signs of $\beta_2$ and $corr(tenure,negemo)$? Make an educated guess in the next two quizzes.
  
 #< quiz "Sign1"
-question: What do you think which sign has $\beta_2^{long}$?
+question: What do you think which sign has $\beta_2$ in the long model?
 sc:
-- \(\beta_2^{long}>0\)
-- \(\beta_2^{long}<0\) *
-- \(\beta_2^{long}=0\) and therefore has no sign.
+- \(\beta_2>0\)
+- \(\beta_2<0\) *
+- \(\beta_2=0\) and therefore has no sign.
 
 success: Great! Your answer is correct. 
 failure: Sorry, not yet correct. Try again
 #> 
 
-In reality, we cannot be sure whether $\beta_2^{long}$ is positive or negative, since it is an unknown population parameter. Nevertheless, we often have a rough idea of how $x_2$(`tenure`) affects $y$(`output`). If someone takes a permanent job, there is probably less pressure to produce creative output. In addition, one has to fulfill certain duties and tasks, such as teaching students or conducting orchestras, which are very time-consuming. Thus, there is less time for composing new creative output when one assumes a tenured position, so the sign is negative. This seems plausible if one thinks, for example, of the publication productivity of a professor before and after his tenured position at a university.Thus, Holley (1977) finds a negative correlation between tenured positions and the research productivity of academics. 
+In reality, we cannot be sure whether $\beta_2$ is positive or negative, since it is an unknown population parameter. Nevertheless, we often have a rough idea of how $x_2$(`tenure`) affects $y$(`output`). If someone takes a permanent job, there is probably less pressure to produce creative output. In addition, one has to fulfill certain duties and tasks, such as teaching students or conducting orchestras, which are very time-consuming. Thus, there is less time for composing new creative output when one assumes a tenured position, so the sign is negative. This seems plausible if one thinks, for example, of the publication productivity of a professor before and after his tenured position at a university.Thus, Holley (1977) finds a negative correlation between tenured positions and the research productivity of academics. 
 
 In case of the correlation between `tenure` and `negemo` different perspectives are possible.
 
@@ -893,7 +895,7 @@ In case of the correlation between `tenure` and `negemo` different perspectives 
 
 However, since we observe both `tenure` and `negemo`, we can calculate the correlation. `cor(dat$tenure,dat$negemo,use="pairwise.complete.obs")= -0.1204937` provides a slightly negative correlation of the two variables with each other.
 
-In summary, $\beta_1^{short}$ has a positive bias and systematically overestimates the "true" causal relationship, since both $\beta_2^{long}$ and $corr(tenure,negemo)$ are less than zero. The statement is only valid for the case when we imagine to be in a world where model $(2)$ is the true model. Therefore "true" is also written in quotation marks here.
+In summary, $\tilde\beta_1$ has a positive bias and systematically overestimates the "true" causal relationship, since both $\beta_2$ and $corr(tenure,negemo)$ are less than zero. The statement is only valid for the case when we imagine to be in a world where model $(2)$ is the true model. Therefore "true" is also written in quotation marks here.
 
 As already mentioned in the infobox, the omitted variable bias can also be described for the case of a  multiple linear regression model. However, the bias formula then differs considerably from that in the simple case.  For a detailed mathematical explanation, see Wooldridge (2020, pp. 114-115).
 
@@ -941,7 +943,7 @@ One can see well from this graph that `negemo` is an endogenous explanatory vari
 
 #< info "Exogeneous and endogeneous explanatory variables"
 
-An explanatory variable is called **exogeneous** if it is not correlated with the error term and **endogenous** if it is correlated with the error term. For example `output` is exogenous if $Cor(output_{it}, u_{it}) = 0$. Otherwise if $Cor(output_{it}, u_{it}) \neq 0$ we say the variable is **endogeneous** (source: Wooldridge (2016), p. 76-77).
+An explanatory variable is called **exogenous** if it is not correlated with the error term and **endogenous** if it is correlated with the error term. For example `output` is exogenous if $Cor(output_{it}, u_{it}) = 0$. Otherwise if $Cor(output_{it}, u_{it}) \neq 0$ we say the variable is **endogenous** (source: Wooldridge (2016), p. 76-77).
 
 #> 
 
@@ -951,11 +953,11 @@ Imagine you can walk along the graph. The only way we can walk along the graph t
 
 How can you close a path? In this case, closing a path means nothing more than controlling for the variable `tenure`. By adding `tenure` in Model $(2)$, the endogeneity problem is solved and the only remaining path is `negemo` on `output`. Our path of interest. 
 
-So, in summary, in Model $(1)$ we measure the direct positive effect of `negemo` on `output` and the indirect positive effect of `negemo` via `tenure` on `output`. The estimator $\hat\beta_1^{short}$ in the short model $(1)$ is thus too large, as it is the sum of these two effects, and does not answer our "research question" correctly.
+So, in summary, in Model $(1)$ we measure the direct positive effect of `negemo` on `output` and the indirect positive effect of `negemo` via `tenure` on `output`. The estimator $\tilde\beta_1$ in the short model $(1)$ is thus too large, as it is the sum of these two effects, and does not answer our "research question" correctly.
 
 How can we see from the diagram that the indirect effect of `negemo` on `output` is also positive? Due to the negative correlation between `tenure` and `negemo`, artists with high negative emotions also have less frequent permanent positions, the negative connection between `tenure` and `output` then in turn means that less frequent permanent positions result in a higher creative output, since the artists can devote all their time to composing their sonatas, symphonies and arias again.
 
-As we will see in the further parts of the problem set, there are also cases where we have to use other tools than the control with variables. This is the case, for example, when we do or cannot observe important variables.
+As we will see in the further parts of the problem set, there are also cases where we must use other tools than the control with variables. This is the case, for example, when we do or cannot observe important variables.
 
 ### Verification
 
@@ -970,7 +972,7 @@ reg1<-lm( output~negemo, data=dat)
 reg2<-lm( output~negemo+tenure, data=dat)
 
 stargazer(reg1, reg2,
-          type="text",
+          type="html",
           digits=3,
           omit.table.layout="s",
           model.numbers=FALSE,
@@ -978,20 +980,20 @@ stargazer(reg1, reg2,
 #>
 ```
 
-One can see that the $\beta_1$ estimate for model $(1)$ with $0.428$ is larger than in model $(2)$ with $0.208$. Thus, $\beta_1^{short}$ indeed systematically overestimates the true effect. Also, the negative effect of `tenure` on `output` already described becomes clear when looking at the estimate for $\beta_2$ with a value of $-3.633$, which moreover is highly significant. The significance of $\beta_1$ decreases in the long model. Here, `negemo` seems to describe `output` less well than `tenure`.
+One can see that the estimate for $\beta_1$ in model $(1)$ with $0.428$ is larger than in model $(2)$ with $0.208$. Thus, $\tilde\beta_1$ indeed systematically overestimates the true effect in the short model. Also, the negative effect of `tenure` on `output` as already described becomes clear when looking at the estimate for $\beta_2$ with a value of $-3.633$, which moreover is highly significant. The significance of the estimate for $\beta_1$ decreases in the long model.
 
-Even though we controlled for `tenure` it is still very unlikely that our estimator $\hat\beta_1$ measures the true causal effect $\beta_1$. So we end our thought experiment in which model $(2)$ is the true model and return to reality.
+Even though we controlled for `tenure` it is still very unlikely that our estimator $\hat\beta_1$ in the long model measures the true causal effect $\beta_1$. So we end our thought experiment in which model $(2)$ is the true model and return to reality.
 
-Other relevant variables for which we do not control are conceivable. In fact, the two previous models have been oversimplified and there exist many more measurable variables for which we can control. The full model with which Borowiecki performed the OLS regression still includes the following control variables: `touring`, `marriage_cohabitation`, `illness`, `letters_annual`, `death_of_relative` and uses fixed effects for `age`, `composer` and `addressee`.
+Other relevant variables for which we do not control are conceivable. In fact, the two previous models have been oversimplified and there exist many more measurable variables for which we can control. The full model with which Borowiecki performed the OLS regression still includes the following control variables: `touring`, `marriage_cohabitation`, `illness`, `letters_annual` and uses fixed effects for `age`, `composer` and `addressee`.
 
 
-### 2.1.2 Fixed Effects
+### 2.1.2 Fixed effects
 
-The models introduced and discussed so far, especially the simple linear regression, were not sufficient to describe the causal effect of `negemo` on `output`. To address the omitted variable bias, we learned about controlling for other relevant variables as a possible solution. For example, by adding `tenure`,`touring`, `marriage_cohabitaion`,`illness`,`letters_annual`,`death_of_relative` to the model. However, this variant might have its limitations especially when one wants to control for unobserved characteristics. Therefore, another option that we will learn about in this subsection is fixed effects regression, which attempts to account for all independent, time-constant factors that influence our dependent variable. (Wooldridge, 2020, pp.439-440)
+The models introduced and discussed so far, especially the simple linear regression, were not sufficient to describe the causal effect of `negemo` on `output`. To address the omitted variable bias, we learned about controlling for other relevant variables as a possible solution. For example, by adding `tenure`,`touring`, `marriage_cohabitaion`,`illness`,`letters_annual` to the model. However, this variant might have its limitations especially when one wants to control for unobserved characteristics. Therefore, another option that we will learn about in this subsection is fixed effects regression, which attempts to account for all independent, time-constant factors that influence our dependent variable. (Wooldridge, 2020, pp.439-440)
 
-In summary, Fixed Effects for `Age`,`Composer` and `Addressee` are effectively a special variant of control variables, which we explain below with an example of Composer Fixed Effects. The implementation of Adressee Fixed Effects works similarly, they control for the relationship to the addressees of the letters and thereby eliminate the bias that could arise if the composers to different addressees change their degree of openness regarding their state of mind. The author also controls for age using a nonlinear polynomial and refers to this as Age Fixed Effects. The motivation stems from trying to account for increased productivity at middle age and lower productivity rates at low and older ages. In our problem set, however, we refer to the author's titled Age Fixed Effects as "age polynomials" from now on, since they are not included in the regression like usual Age Fixed Effects. Rather, they are nonlinear control variables that are included as additional variables in the regression. Here, `age_1` corresponds to unchanged age, `age_2` to age squared divided by 100, `age_3` to age cubed divided by 10000, and `age_4` to age to the power of 4 divided by 1000000.
+In summary, fixed effects for `Age`,`Composer` and `Addressee` are effectively a special variant of control variables, which we explain below with an example of composer fixed effects. The implementation of Adressee fixed effects works similarly, they control for the relationship to the addressees of the letters and thereby eliminate the bias that could arise if the composers to different addressees change their degree of openness regarding their state of mind. The author also controls for age using a nonlinear polynomial and refers to this as Age fixed effects. The motivation stems from trying to account for increased productivity at middle age and lower productivity rates at low and older ages. In our problem set, however, we refer to the author's titled Age fixed effects as "age polynomials" from now on, since they are not included in the regression like usual Age fixed effects. Rather, they are nonlinear control variables that are included as additional variables in the regression. Here, `age_1` corresponds to unchanged age, `age_2` to age squared divided by 100, `age_3` to age cubed divided by 10000, and `age_4` to age to the power of 4 divided by 1000000.
 
-Let's try to understand the idea behind Fixed Effects with a concrete example. The idea behind Composer Fixed Effects is to control for unobserved differences (characteristics) between composers. Conceivable here are for example the different strength of expression and perception of the composers at a comparable event, similarly as it is the case with fund managers if they express their views regarding an asset in a raw score. In our case this means, that for one composer a failed dress rehearsal before a performance is bad. The other categorizes it as catastrophic, disastrous, and possible end of his career, and yet another classifies it as not worth mentioning. 
+Let's try to understand the idea behind fixed effects with a concrete example. The idea behind composer fixed effects is to control for unobserved differences (characteristics) between composers. Conceivable here are for example the different strength of expression and perception of the composers at a comparable event, similarly as it is the case with fund managers if they express their views regarding an asset in a raw score. In our case this means, that for one composer a failed dress rehearsal before a performance is bad. The other categorizes it as catastrophic, disastrous, and possible end of his career, and yet another classifies it as not worth mentioning. 
 
 If we now use model $(1)$ again and add composer fixed effects, this basically means that different artists result in different intercepts $\beta_0$ and we control for this. We model this difference by allowing different axis intercept parameters for each person (Beethoven, Liszt, and Mozart) and call this model 3.
 
@@ -999,7 +1001,7 @@ If we now use model $(1)$ again and add composer fixed effects, this basically m
 
 The dummy variable for the composer Mozart is missing. This is necessary because we compare the dummies in comparison to a reference category, which in this case is `composerMozart`. Furthermore Model $(3)$ has three different intercepts, one for each composer (Hanck et. al 2021, Section 10.3) 
 
-**Task:** Run a regression for Model $(3)$. The implementation in R can be done as usual with the command `lm()`. 
+**Task:** Run a regression for Model $(3)$. The implementation in R can be done as usual with the command `lm()`. Remember that `composer1` corresponds to Beethoven, `composer2` corresponds to Liszt and `composer3` corresponds to Mozart.
 
 ```{r "Optional3", eval=FALSE, optional=TRUE}
 #< task
@@ -1010,10 +1012,10 @@ reg3 <-  lm(output ~ negemo + composer1 + composer2 , data=dat)
 ```
 
 
-Another more comfortable possibility is to use the function `felm` from the `lfe` package. This allows to add the fixed effects of the regression with the normal control variables via a less computationally intensive and more clearer way. The structure of the felm function is `felm(y ~ x1 + x2 | fixed_effects , data=dat)`. Note that the variables used in the section fixed effects, should not be the dummy variables. It is a single column from the data that is referred to and in which the different categories are listed. 
-This means that when using the `lm()` function, the three or two dummy variables are used. `composer1` corresponds to Beethoven, `composer2` corresponds to Liszt and `composer3` corresponds to Mozart. Using the `felm()` function, we refer to the column `composer`, which is a combination of the three previous variables and takes the values Beethoven, Mozart or Liszt.
+Another less computationally intensive possibility is to use the function `felm` from the `lfe` package. The structure of the felm function is `felm(y ~ x1 + x2 | fixed_effects , data=dat)`. Note that the variables used in the section fixed effect can be the dummy variables connected with a `+` or a single column from the data set that is referred to and in which the different categories are listed. Referring to a single column of the data set is also possible by using the `lm()` function.
+The column `composer` is a combination of the three previous variables and takes the values Beethoven, Mozart or Liszt.
 
-**Task:** Perform the fixed effects regression for model $(3)$ using the `felm` function.
+**Task:** Perform the fixed effects regression for model $(3)$ using the `felm` function and referring only to one column (`composer`).
 ```{r}
 #< fill_in
 
@@ -1032,9 +1034,9 @@ reg3 <- felm(output ~ negemo | composer, data=dat)
 
 ### 2.1.3 Comparison of the results
 
-Now that we have learned about both adding control variables and Fixed Effect Regression as a way to correct for a possible violation of assumption 2, it is time to combine our learned methods and introduce the full OLS model used by Borowiecki. Since adding additional 10 dummy variables for the Fixed Effects would have made the regression very confusing, keep in mind that Age Polynomials, Composer FE, and Addressee FE are added to Model $(4)$.
+Now that we have learned about both adding control variables and fixed effect Regression as a way to correct for a possible violation of assumption 2, it is time to combine our learned methods and introduce the full OLS model used by Borowiecki. Since adding additional 10 dummy variables for the fixed effects would have made the regression very confusing, keep in mind that Age Polynomials, Composer FE, and Addressee FE are added to Model $(4)$.
 
-\[output_t = \beta_0+\beta_1 \cdot negemo_t+\beta_2 \cdot tenure_t+\beta_3 \cdot touring+\beta_4 \cdot marriage+\beta_5 \cdot illness+\beta_6 \cdot lettersannual+u    \tag{4} \]
+\[output_t = \beta_0+\beta_1 \cdot negemo_t+\beta_2 \cdot tenure_t+\beta_3 \cdot touring+\beta_4 \cdot marriage+\beta_5 \cdot illness+\beta_6 \cdot lettersannual+...+u    \tag{4} \]
 
 
 **Task:** Run the regression for model $(4)$ and then compare models $(1)$, $(2)$, $(3)$, and $(4)$ with each other. Just click `check` to view the results.
@@ -1049,7 +1051,7 @@ reg4 <- felm(output ~ negemo + age_1 + age_2 +age_3+age_4 + tenure + touring + m
 
 
 stargazer(reg1, reg2, reg3, reg4,
-          type="text",
+          type="html",
           digits=3,
           model.numbers=FALSE,
           column.labels=c("Short Model (1)", "Long Model (2)", "Fixed Effects(3)", "Combined Model(4)"),
@@ -1062,15 +1064,15 @@ stargazer(reg1, reg2, reg3, reg4,
 #>
 ```
 
-It is noticeable that over time the apparent effect of `negemo` on `output` becomes smaller and more insignificant until it is not even significant at the 10% level when the methods are combined. After adding another relevant explanatory variable `tenure`, we reduced some error resulting from the violation of assumption 2. Assumption 2 required that the expected value of the residuals given an explanatory variable is zero. We solved this endogeneity problem and reduced the omitted variable bias. Another way to correct for correlation between error term and explanatory variable was to consider fixed effects. In Model $(3)$, Model $(1)$ is corrected for Composer Fixed Effects. More specifically, it controls for unobserved composer characteristics.   
+It is noticeable that from left to right the apparent effect of `negemo` on `output` becomes smaller and more insignificant until it is not even significant at the 10% level when the methods are combined. After adding another relevant explanatory variable `tenure`, we reduced some error resulting from the violation of assumption II. Assumption II required that the expected value of the residuals given an explanatory variable is zero. We solved this endogeneity problem and reduced the omitted variable bias. Another way to correct for correlation between error term and explanatory variable was to consider fixed effects. In Model $(3)$, Model $(1)$ is corrected for Composer fixed effects. More specifically, it controls for unobserved composer characteristics.   
 
-Unfortunately, in many examples, it is not possible to control for confounders, because the data is simply missing, or the variable is not measurable. Thus, unobserved confounders are a major obstacle in measuring the true causal effect. Sometimes there are methods to circumvent these problems. One of them, instrumental variable regression, we will learn about in the next exercise.
+Unfortunately, in many examples, it is not possible to control for all confounders, because the data is simply missing, or the variable is not measurable. Thus, unobserved confounders are a major obstacle in measuring the true causal effect. Sometimes there are methods to circumvent these problems. One of them, instrumental variable regression, we will learn about in the next exercise.
 
-## Exercise 2.2 -- Instrumental Variables Regression
+## Exercise 2.2 -- Instrumental variables regression
 
 In our previous attempts to study the causal effect of emotions on creativity, we encountered endogeneity problems that we were able to solve by considering additional observed variables. In the previous exercise, we learned how control variables and fixed effects can help mitigate the effect of biased and inconsistent estimators. Let us recall the state of our most recent model $(4)$. We have estimated
 
-\[output = \beta_0+\beta_1 \cdot negemo+\beta_2 \cdot tenure+\beta_3 \cdot touring+\beta_4 \cdot marriage+\beta_5 \cdot illness+\beta_6 \cdot lettersannual+u    \tag{4} \]
+\[output = \beta_0+\beta_1 \cdot negemo+\beta_2 \cdot tenure+\beta_3 \cdot touring+\beta_4 \cdot marriage+\beta_5 \cdot illness+\beta_6 \cdot lettersannual+...+u    \tag{4} \]
 
 with Fixed Effects for Composers and Adressees, as well as Age Polynomials. We have already done our best to include all relevant observable explanatory variables and information in the model. But what do we do if there is still substantial correlation between an explanatory variable of interest and the error term? Reasons for this could be, according to Kennedy (2008 , pp.139-140), reverse causation or an unobserved omitted explanatory variable that is correlated with an included explanatory variable and therefore causes the latter to be correlated with the error term.
 
@@ -1081,13 +1083,13 @@ Moreover, a relevant explanatory variable `income` that could be related to both
 One possible solution to this dilemma is instrumental variable regression. It is a widely used and frequently applied method in econometrics to eliminate the bias in an OLS estimator due to the correlation between the explanatory variable and the error term of the regression. We introduce IV regression theoretically in the next section before discussing it in more detail using our example.
 
 
-### 2.2.1 Theoretical Introduction: Simple Instrumental Variable Regression and Two-Stage Least Squares Method
+### 2.2.1 Theoretical introduction: Simple instrumental variable regression and two-stage least squares method
 
 Assume again a simple regression model $(a)$ 
 
 \[y= \beta_0+\beta_1 \cdot x+u  \tag{a}  \]
 
-in that $x$ and $u$ are correlated i.e. $x$ is endogenous. A Regression using OLS estimators would thus produce inconsistent, biased estimators. To estimate $\beta_1$ consistently, we need the information of another variable, called the instrumental variable, which in this example is noted as $z$. Not only in music the choice of an appropriate instrument is important and must meet certain criteria, but in econometrics the instrument (as Instrumental Variables are often simplistically called) must also meet two important criteria (Wooldridge 2020, p. 497):
+in which $x$ and $u$ are correlated i.e. $x$ is endogenous. A regression using OLS estimators would thus produce inconsistent, biased estimators. To estimate $\beta_1$ consistently, we need the information of another variable, called the instrumental variable, which in this example is noted as $z$. Not only in music the choice of an appropriate instrument is important and must meet certain criteria, but in econometrics the instrument (as Instrumental Variables are often simplistically called) must also meet two important criteria (Wooldridge 2020, p. 497):
 
 + **Relevance condition**: $z$ is **correlated** with the endogenous explanatory variable $x$. Thus, $Cor(z,x)\ne0$ must hold.
 
@@ -1166,7 +1168,7 @@ The advantage of `ivreg()` is that it automatically computes diagnostic tests fo
 
 That the instrumental variable regression can also be carried out in the multiple case with several instruments and control variables and thereby yield consistent estimators can be understood in Wooldridge (2020) on pages 505-509 and 513. For the 2SLS method, only the endogenous explanatory variable has to be regressed on all exogenous explanatory variables and all instruments in the first step. The further procedure corresponds to the method in the simple version.
 
-### 2.2.2 Applied Instrumental Variable Regression
+### 2.2.2 Applied instrumental variable regression
 
 Let us now return to our example and try to perform the instrumental variable regression for Model $(4)$. To start the analysis we have to load the data again.
 
@@ -1194,7 +1196,7 @@ Let us now check for ourselves whether this instrument fulfills the two required
 
 #### Relevance
 
-The relevance condition in this case is $Cor(death\_of\_relative,negemo)\ne0$. We have already briefly mentioned that it is relatively easy to test the validity of this condition. We only have to regress the endogenous variable `negemo` on the instrument and see if the explanatory content of the variation $R^2$ is high enough.
+The relevance condition in this case is $Cor(death\_of\_relative,negemo)\ne0$. We have already briefly mentioned that it is relatively easy to test the validity of this condition. We only have to regress the endogenous variable `negemo` on the instrument and see if the explanatory content of the variation $R^2$ is high enough. Note that this method is only correct if we have no other control variables. However, since in practice we usually have regressions with multiple control variables, the relevance condition is tested by activating it in the summary of the ivreg calculation. We will look at this in the task following this one. 
 
 **Task:** Regress the endogenous variable on the instrument by inserting the correct variable names in the gaps.
 
@@ -1212,17 +1214,37 @@ While `death_of_relative` appears to be a highly significant variable, the $R^2$
 
 But at what point is the association between instrument and endogenous variable large enough? Kennedy (2008, p.145) assumes as a rule of thumb in the case of one endogenous variable that the F-value should be larger than 10. If this is the case, the IV bias is assumed to be smaller than 10% of the OLS bias and the relevance condition can be considered as sufficiently fulfilled. Even though our instrument does not have an exceedingly large association with the endogenous variable `negemo`, the relevance condition can be considered satisfied under the rule of thumb since the F-value of our regression is $14.49$. However, for F values that are too small, it is strongly advisable to avoid IV regression, since instruments that are too weak (e.g., when the instrument is mildly endogenous) may lead to the IV estimator being more biased than the OLS estimator.
 
+**Task:** As already noted, there is also a simple reliable way to test the relevance condition directly. Complete the following code intuitively (insert TRUE or FALSE) for our final model $4$.
+
+```{r}
+#< fill_in
+
+IVRelevance <- ivreg( output ~ negemo +age_1 + age_2 +age_3+age_4 + composer1+composer2+relationship1+relationship2+relationship3+relationship4+relationship5+ tenure + touring + marriage_cohabitation + illness + letters_annual | death_of_relative+age_1+age_2+age_3+age_4 + composer1+composer2+relationship1+relationship2+relationship3+relationship4+relationship5+ tenure + touring + marriage_cohabitation + illness + letters_annual  , data=dat)
+
+summary(IVRelevance, diagnostics= ___ )$diagnostics
+
+#>
+
+
+IVRelevance <- ivreg( output ~ negemo +age_1 + age_2 +age_3+age_4 + composer1+composer2+relationship1+relationship2+relationship3+relationship4+relationship5+ tenure + touring + marriage_cohabitation + illness + letters_annual | death_of_relative+age_1+age_2+age_3+age_4 + composer1+composer2+relationship1+relationship2+relationship3+relationship4+relationship5+ tenure + touring + marriage_cohabitation + illness + letters_annual  , data=dat)
+
+summary(IVRelevance, diagnostics=TRUE, type=html)$diagnostics
+
+```
+
+We will discuss the results of the IV regression later. Let's focus on the diagnostics first. If we set diagnostics to TRUE, the summary command displays the weak instrument test, the Wu Hausmann test, and the Sargan test in addition to calculating the coefficients. The weak instrument test is used to check the relevance condition. It performs an F test for the first stage regression, where the null hypothesis is that the instrument is weak (i.e. the relevance condition is not fulfilled). In our case we can reject the null hypothesis (p-value < 0.1%), so there is no weak instrument and the relevance condition is fulfilled.
+
 #### Exogeneity
 
 A much more difficult condition to test is the exogeneity condition $Cor(death\:of\:relative,\nu)=0$. When there are more instruments than endogenous explanatory variables, some sort of test (e.g. the Sargan test) is possible. However, since in our specific case there is only one instrument for an endogenous variable, it is actually mathematically impossible to test the exogeneity condition (Kennedy 2008 p. 144).
 
 Therefore, it is of particular importance to discuss the fulfillment of the exogeneity condition logically. The use of economic theory and a detailed argumentation are often indispensable for the justification.
 
-Ideally, the instrument should be part of a perfectly randomized experiment, which is unfortunately not the case here. However, if the death of a relative (`death_of_relative`) was random or unexpected, i.e. independent of certain characteristics, this variable is a candidate for an instrument. 
+Ideally, the instrument should be part of a perfectly randomized experiment, because then we could be sure that whether a relative died was completely random and independent of any confounders. Unfortunately we have no perfectly randomized experiment here. However, if the death of a relative (`death_of_relative`) was random or unexpected, i.e. independent of certain characteristics, this variable is a candidate for an instrument. 
 
-Unexpected or sudden causes of death used to be frequent illness or death in childhood. Thus, it is important to assume that the probability of becoming ill is randomly distributed and independent of social status or spending on health. In relation to modern times, we can say with a fair degree of certainty that this assumption is not fulfilled. For Example Demakakos et.al(2008) could show that subjective social status was related positively to almost all health outcomes. In addition, Mirowsky and Ross(2003) identify, among other things, more control over one's own life and learned effectiveness as reasons why people with higher education and associated higher social status have healthier lifestyles. considering those findings, `death_of_relative` would not be classified as suitable instrument.
+Unexpected or sudden causes of death used to be frequent illness or death in childhood. Thus, it is important to assume that the probability of becoming ill is randomly distributed and independent of social status or spending on health. In relation to modern times, we can say with a fair degree of certainty that this assumption is not fulfilled. For Example Demakakos et.al(2008) could show that subjective social status was related positively to almost all health outcomes. In addition, Mirowsky and Ross(2003) identify, among other things, more control over one's own life and learned effectiveness as reasons why people with higher education and associated higher social status have healthier lifestyles. Considering those findings, `death_of_relative` would not be classified as suitable instrument.
 
-Borowiecki does not discuss such reasons in detail in his paper.  Rather, he lists biogafic information on sudden causes of death, to argue for the independence between social status and catching an illness. As a further supporting argument that death is random, he argues that in the results of the first stage regression, with the addition of more variables, the coefficient for `death_of_relative` does not change (Borowiecki 2017, p.602). At this point, it is easy to see that the reasoning used plays a large role in whether an IV estimator can be identified as appropriate. Since Borowiecki substantiates his argumentation with meaningful figures and since we are dealing specifically with the case of three famous composers, the arguments discussed in the previous paragraph can probably not be transferred and we can probably say that the probability of becoming ill was randomly distributed for the persons studied.
+Borowiecki does not discuss such reasons in detail in his paper.  Rather, he lists biogafic information on sudden causes of death, to argue for the independence between social status and catching an illness. As a further supporting argument that death is random, he argues that in the results of the first stage regression, with the addition of more variables, the coefficient for `death_of_relative` does not change (Borowiecki 2017, p.602). 
 
 **Task:** Run the regression to compare the results of the two First Stage regressions. Just click `check`.
 
@@ -1233,7 +1255,7 @@ FirstStageShort <- felm(negemo ~ death_of_relative  +age_1 + age_2 +age_3+age_4 
 FirstStageLong <- felm(negemo ~ death_of_relative + age_1 + age_2 +age_3+age_4+ tenure + touring + marriage_cohabitation + illness + letters_annual| composer + category_relationship , data=dat)
 
 stargazer(FirstStageShort, FirstStageLong,
-          type="text",
+          type="html",
           digits=3,
           model.numbers=FALSE,
           column.labels=c("FirstStageShort","FirstStageLong"),
@@ -1245,13 +1267,13 @@ stargazer(FirstStageShort, FirstStageLong,
 #>
 ```
 
-Based on the results, we see that the coefficient for `death_of_relative` remains almost identical and also the standard deviation and the significance level do not change. This means that the additional control variables and fixed effects have only a small association with the variable `death_of_relative`.
+Based on the results, we see that the coefficient for `death_of_relative` remains almost identical and also the standard deviation and the significance level do not change. This means that the additional control variables and fixed effects have only a small association with the variable `death_of_relative`. Since Borowiecki substantiates his argumentation with meaningful figures and since we are dealing specifically with the case of three famous composers, we can say that the probability of dying was randomly distributed for the death of relatives and does not influence the productivity of a composer over any other observable variable.
 
-We could already conclude from the previous regression that the death of a family member does not seem to affect output via any of the known control variables.  An associated causal graph illustrates this.
+In summary we could already conclude from the previous regression that the death of a family member does not seem to affect output via any of the known control variables.  An associated causal graph illustrates this.
 
 ![Figure 2: Causal graph fulfilling exogeneity condition; Source: own diagram.](images/CausalGraphIV1.png)
 
-Furthermore, a violation of the exogeneity assumption could still exist if the death of a family member additionally influences the artist's output via a previously unobserved link. One conceivable problematic link is the one via the variable `income`. The death of the composer's parents could significantly change his financial situation in the form of an income shock. Possible effects are either an increase in disposable income due to inheritance or a reduction in income due to the loss of an income-generating person in the family community.  
+However, a violation of the exogeneity assumption can still exist if the death of a family member additionally influences the artist's output via a previously unobserved link. One conceivable problematic link is the one via the variable `income`. The death of the composer's parents could significantly change his financial situation in the form of an income shock. Possible effects are either an increase in disposable income due to inheritance or a reduction in income due to the loss of an income-generating person in the family community.  
 
 If the `income` furthermore is correlated with the `output`, then this leads to the fact that the exogeneity condition is not fulfilled and we would have an invalid instrument with `death_of_relative`. We could not solve this by controlling for `income` because we do not have the data to do so.
 
@@ -1284,13 +1306,13 @@ Another argument that there is probably no negative income shock is the followin
 
 Considering the abundance of arguments, we can conclude that the death of a relative affects the negative emotions on the direct path and the exogeneity condition is not violated by substantial correlations with the error term. We therefore use `death of relative` relative as a robust instrument for the instrumental variable estimation. 
 
-### 2.2.3 Results and Discussion
+### 2.2.3 Results and discussion
 
 Now that we have discussed everything in detail, we can finally run the instrumental variable regression for Model $4$. 
 
 \[output = \beta_0+\beta_1 \cdot negemo+\beta_2 \cdot tenure+\beta_3 \cdot touring+\beta_4 \cdot marriage+\beta_5 \cdot illness+\beta_6 \cdot lettersannual+u    \tag{4} \]
 
-**Task:**  Fill in the gaps to run the IV regression. Do not be surprised by the large number of variables in the IV regression. The function `ivreg()` does not allow for the explicit integration of fixed effects as `felm()` does.
+**Task:**  Fill in the gaps to run the IV regression. Do not be surprised by the large number of variables in the IV regression.
 
 ```{r}
 #< fill_in
@@ -1310,7 +1332,7 @@ reg4IV <- ivreg( output ~ negemo +age_1 + age_2 +age_3+age_4 + composer1+compose
 ```
 
 #< award "Musician"
-You can perform a regression with Instrument. However, in case you are a musician and do not like this wordplay, you might like the possibility of composing with R, as described in this [article.](https://r-music.rbind.io/posts/2021-04-03-gm/)
+You can perform a regression with an instrument. However, in case you are a musician and do not like this wordplay, you might like the possibility of composing with R, as described in this [article.](https://r-music.rbind.io/posts/2021-04-03-gm/)
 #>
 
 
@@ -1329,7 +1351,7 @@ reg3IV <- ivreg( output ~ negemo+ composer1+composer2 | death_of_relative+ compo
 
 
 stargazer(reg1, reg2, reg3, reg4,reg3IV,reg4IV,
-          type="text",
+          type="html",
           title="Creativity and negative emotions. Model summary",
           digits=3,
           model.numbers=FALSE,
@@ -1344,9 +1366,9 @@ stargazer(reg1, reg2, reg3, reg4,reg3IV,reg4IV,
 ```
 
 If we look at the columns of the table from left to right, we see ascending in chronological order the regression results of the models we have introduced in this problemset. First, we started with the simplest case in Model $(1)$ and regressed only `output` on `negemo`. Afterwards, we thought about a possible omitted variable bias and in Model $(2)$ added `tenure` as another explanatory variable to get a first understanding about this problem. We solved possible remaining endogeneity problems by integrating fixed effects and adding additional control variables in Model $(3)$ and $(4)$. Until this point we have always used the OLS estimator. In columns 5 and 6, we estimate our models with the IV estimator, since we want to remove the remaining bias caused by unobservable confounders. For this we were able to identify `death_of_relative` as a valid instrument.
-Over time, the coefficient on our variable of interest `negemo` became smaller and less significant. That is, until we observed a jump in both the magnitude and precision of the estimate with the introduction of the IV estimator. When we compared the short and long model in the previous chapter we assumed an overestimation of the true coefficient. However, when we compare the OLS results at the beginning with the IV results at the end, we see that we underestimated the true effect. This change in the direction of the bias clearly shows that there are individual effects that point in different directions. In general, any premature interpretation of effects should be treated with caution.
+Looking at the table from left to right, the coefficient on our variable of interest `negemo` became smaller and less significant. That is, until we observed a sudden difference in both the magnitude and precision of the estimate with the introduction of the IV estimator. When we compared the short and long model in the previous chapter we assumed an overestimation of the true coefficient. However, when we compare the OLS results at the beginning with the IV results at the end, we see that we underestimated the true effect. This change in the direction of the bias clearly shows that there are individual effects that point in different directions. In general, any premature interpretation of effects should be treated with caution.
 
-Looking at the Adjusted $R^2$, we see that our added control variables and fixed effects make a substantial contribution to increasing the explanatory power of the models. Note, however, that the interpretation of (Adjusted) $R^2$ in instrumental variables regressions is not useful. This is beause one of the explanatory variables is correlated with the error term and we therefore can't decompose the variance of the outcome y.
+Looking at the Adjusted $R^2$, we see that our added control variables and fixed effects make a substantial contribution to increasing the explanatory power of the models. Note, however, that the interpretation of (Adjusted) $R^2$ in instrumental variables regressions is not the same as in OLS regressions. This is because one of the explanatory variables $x$ is correlated with the error term $u$ and we therefore can’t decompose the variance of the outcome $y$. “IV methods are intended to provide better estimates of the ceteris paribus effect of $x$ on $y$ when $x$ and $u$ are correlated; goodness of fit is not a factor” (Wooldridge 2020, p. 505)
 
 The final results, which Borowiecki refers to in his paper, can be examined in the last column. We get significant results for almost all explanatory variables. If we look closer at the explanatory variables, they also have the direction we expect. A fixed position `tenure` has a negative effect on the output, since the composer must pursue other tasks and has less time for creative work. Similarly, `marriage_cohabition` has a negative effect on the output of artists, since the composer is likely to invest more time in the relationship and probably has a high amount of positive emotions. The number of letters (`letters_annual`) is positively related to the `output` of the composers, which is probably due to advertising reasons.
 
@@ -1367,7 +1389,7 @@ So now we can do what we've been waiting to do all exercise: Interpret the effec
 We get a better sense of the size of the effect if we relate it to the average values.
 *Note that, unlike in the paper, we use the average values of the actual observations used and not those of the entire replication dataset (for more information see the appendix). The percentages may therefore differ slightly.*
 
-**Task:**If the average proportion of negative emotions in the total word count increases by 0.1 percentage points (approximately 9.35 percentage), how much (in percentage) does the annual output of outstanding compositions increases in the following year?
+**Task:**If the average proportion of negative emotions in the total word count increases by 0.1 percentage points (approximately 9.35 percentage), how much (in percentage of the mean value) does the annual output of outstanding compositions increases in the following year?
 
 ```{r}
 #< fill_in
@@ -1410,11 +1432,10 @@ SadnessIV <- ivreg( output ~ ___ +age_1 + age_2 +age_3+age_4 + composer1+compose
 
 stargazer(Stage1Anx,AnxietyIV,Stage1Anger,AngerIV ,Stage1Sad,SadnessIV, 
           style="default",
-          type="text", 
+          type="html", 
           title="Creativity gains by type of negative emotion",
           column.labels=c("Anxiety First Stage", "Output Anxiety", "Anger First Stage", "Output Anger", "Sadness First Stage", "Output Sadness"),
           omit = c("age_1","age_2","age_3","age_4","Constant","composer1","composer2","composer3","relationship1","relationship2","relationship3","relationship4","relationship5","relationship6"),
-          omit.table.layout = c("s"),
           add.lines = list(c("Age Polynomials","YES","YES","YES","YES","YES","YES"),
                            c("Composer FE","YES","YES","YES","YES","YES","YES"),
                            c("Adressee FE","YES","YES","YES","YES","YES","YES")))
@@ -1433,19 +1454,18 @@ SadnessIV <- ivreg( output ~ sadness +age_1 + age_2 +age_3+age_4 + composer1+com
 
 stargazer(Stage1Anx,AnxietyIV,Stage1Anger,AngerIV ,Stage1Sad,SadnessIV, 
           style="default",
-          type="text", 
+          type="html", 
           title="Creativity gains by type of negative emotion",
           column.labels=c("Anxiety First Stage", "Output Anxiety", "Anger First Stage", "Output Anger", "Sadness First Stage", "Output Sadness"),
           omit = c("age_1","age_2","age_3","age_4","Constant","composer1","composer2","composer3","relationship1","relationship2","relationship3","relationship4","relationship5","relationship6"),
-          omit.table.layout = c("s"),
           add.lines = list(c("Age Polynomials","YES","YES","YES","YES","YES","YES"),
                            c("Composer FE","YES","YES","YES","YES","YES","YES"),
                            c("Adressee FE","YES","YES","YES","YES","YES","YES")))
 
 ```
 
-We see that the instrumental variable shows a positive significant effect for each of the regressions. The effect is strongest for the First Stage regression with `sadness`. Furthermore, only in the instrumental variable regression with `sadness`  a significant effect is observable. For the IV regressions with `anxiety` and `anger` the corresponding effect lies outside the 90% confidence interval (p-value < 0.12). As Borowiecki summarizes, his results are in line with psychological research by Monroe et al. (2009) who finds a strong link between sadness and depression and Andreasen (2005) who finds that depression leads to increased creativity. Also it is consistent with psychological research, that in the First Stage Regression for Sadness, the number of letters written per year has a significant negative effect (i.e. fewer letters are associated with greater sadness) because Goleman (2012) lists isolation and withdrawal as coping mechanisms for sadness.
-
+We see that the instrumental variable shows a positive significant effect for each of the regressions. The effect is strongest for the First Stage regression with `sadness`. Furthermore, only in the instrumental variable regression with `sadness`  a significant effect is observable. The p-value for `anxiety` and `anger` is smaller than $0.12$, whereas the p-value for sadness equals $0.052$. As Borowiecki summarizes, his results are in line with psychological research by Monroe et al. (2009) who finds a strong link between sadness and depression and Andreasen (2005) who finds that depression leads to increased creativity. Also it is consistent with psychological research, that in the First Stage Regression for Sadness, the number of letters written per year has a significant negative effect (i.e. fewer letters are associated with greater sadness) because Goleman (2012) lists isolation and withdrawal as coping mechanisms for sadness.
+In summary, we find an effect for `sadness`. It is worth adding, however, that just because `anxiety` and `anger` are not significant at any of the usual levels does not mean that we find nothing. If we look at the point estimates, they are almost twice as large compared to `sadness`.
 
 
 ## Exercise 4 -- Obtaining emotion indicators
@@ -1487,11 +1507,11 @@ The underlying lexicon can be changed and also an own categorization can be used
 In the following exercises, we will model the analysis with the package `quanteda` using some letter examples.
 
 
-## Exercise 4.1 -- Letter Analysis using quanteda
+## Exercise 4.1 -- Letter analysis using quanteda
 
 We have already clarified how the emotion indicators are composed. In this exercise, we will go one step deeper and look at how exactly the words are assigned. For this we will use the content analysis tool `quanteda`. Since automated content analysis is a word-by-word analysis that cannot look at the "big picture", the analysis basically requires two components that are compared with each other. These are on the one hand the corpus and on the other hand the lexicon. A corpus is a collection of texts with the corresponding metadata. In our case these are the letters.
 
-The creation of a corpus allows us to combine letters from different sources into one object and to provide it with metadata. In the further course of the analysis, we no longer work with an R-Data frame but with a Quanteda corpus. The disadvantage is that many previously learned methods cannot simply be applied to the corpus class in the same way. However, especially for a large number of texts to be analyzed, the corpus class is an advantage. The lexicon gives us the definitional framework. Different lexicons exist, which are generated in different ways, are thematically specialized in different ways, and contain a different amount of words. Hence, if you use a different lexicon, you will most likely get a different result.
+The creation of a corpus allows us to combine letters from different sources into one object and to provide it with metadata. In the further course of the analysis, we no longer work with an R-Data frame but with a quanteda corpus. The disadvantage is that many previously learned methods cannot simply be applied to the corpus class in the same way. However, especially for many texts to be analyzed, the corpus class is an advantage. The lexicon gives us the definitional framework. Different lexicons exist, which are generated in different ways, are thematically specialized in different ways, and contain a different number of words. Hence, if you use a different lexicon, you will most likely get a different result.
 
 Not only the lexicon but also the design of the corpus has a decisive influence on the results. In the further course of the application we encounter the central adjusting screws and also understand why automated content analysis must be discussed critically in certain points.
 Let us first start with the creation of the corpus.  
@@ -1850,7 +1870,7 @@ Do you recognize who is represented here? Maybe it helps to squint your eyes and
 
 You can take a look at the underlying code by clicking on the info block.
 
-#< info "License and Code"
+#< info "License and code"
 
 MIT License
 
@@ -2025,7 +2045,7 @@ awards()
 
 ## Exercise Appendix
 
-### Replication Data Transformation
+### Replication data transformation
 
 While working with the original replication dataset, I noticed some points that I would like to discuss below. As mentioned in the problem set, the dataset basically consists of 2 parts: The letter data (generated via LIWC) and the life data (generated via Groove Music Online) of the composers. For various reasons, datasets may not be entirely complete. This can sometimes be more or less dramatic. In our case, we cannot use observations when one of the important groups of variables - the emotion data collected via the LIWC algorithm or the background information (more precisely the output variable) - is missing. Thus, this results in a total of 3 possible cases: Either the LIWC variable is missing or the output variable is missing or both variables are missing. Theoretically, the problem could also be reduced to two cases, but we keep the 3 cases for overview reasons.
 
@@ -2072,7 +2092,7 @@ head(Liszt,8)
 
 However, this problem only affects the `numberofletter` column and thus the unique indexing of the letters. If you look at the duplicates, you will quickly notice that they are different letters even if they have the same numbering. The corresponding data records are not further modified or removed, since it concerns data, whose incorrect indexification does not carry further weight. Only the assignment of a letter to its evaluation in the data set is no longer possible. Since we do not have the actual letters - except for a small excerpt - this is not a big problem. However, for the sake of completeness, this issue has also been pointed out. 
 
-In the corresponding folder on github  the reduced dataset `composer_data_reduced.rds` and the original replication dataset `composer_data.dta` provided by Borowiecki can be found.
+In the corresponding folder on github the reduced dataset `composer_data_reduced.rds` and the original replication dataset `composer_data.dta` provided by Borowiecki can be found.
 
 ## Exercise References
 
@@ -2186,7 +2206,7 @@ Figure 2: Causal graph fulfilling exogeneity condition; Source: own diagram.
 Figure 3: Causal graph violating the exogeneity condition; Source: own diagram.
 
 
-*All of the above links were accessable as of January 07,2022*
+*All of the above links were accessible as of January 07,2022*
 
 ### Licence
 
